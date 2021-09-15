@@ -1,3 +1,4 @@
-# byrinha-clock
+# byrinhas-clock
+(em andamento...)
 
-Projeto pessoal de relógio digítal feito com java e componentes swing :smile:
+Projeto pessoal de relógio com alarme feito com java e componentes swing :smile:

@@ -1,8 +1,8 @@
-package birinhas.time;
+package byrinhas.clock;
 
-public class BirinhasTime {
+public class ByrinhasClock {
 
     public static void main(String[] args) {
-        
+       
     }
 }

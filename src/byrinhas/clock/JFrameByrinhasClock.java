@@ -1,4 +1,4 @@
-package birinhas.time;
+package byrinhas.clock;
 
 import java.awt.Color;
 import java.text.SimpleDateFormat;
@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
-public class JFrameBirinhasTime extends javax.swing.JFrame implements Runnable {
+public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable {
 
     // ALGUMAS VARIAVEIS DE ALARME:   
     boolean alarmStatus;
@@ -69,7 +69,7 @@ public class JFrameBirinhasTime extends javax.swing.JFrame implements Runnable {
     }
 
     // CONSTRUTOR:
-    public JFrameBirinhasTime() {
+    public JFrameByrinhasClock() {
 
         initComponents();
 
@@ -410,7 +410,7 @@ public class JFrameBirinhasTime extends javax.swing.JFrame implements Runnable {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameBirinhasTime().setVisible(true);
+                new JFrameByrinhasClock().setVisible(true);
             }
         });
     }

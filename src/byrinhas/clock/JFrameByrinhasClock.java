@@ -8,62 +8,99 @@ import javax.swing.JOptionPane;
 
 public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable {
 
-    // ALGUMAS VARIAVEIS DE ALARME:   
+    //          :::::::::: ALARME ::::::::::
+    //
+    // ALGUMAS VARIAVEIS DE ALARME:
     boolean alarmStatus;
+    int alarmHour, alarmMinutes;
     String textAlarmStatus;
-    int hora, minuto;
+
+    // METODO QUE LIMPA OS CAMPOS DE TEXTO:
+    public void limpaCampos() {
+
+        jTextFieldHour.setText("");
+        jTextFieldMinutes.setText("");
+    }
 
     // METODO QUE ATIVA O ALARME:
     public void setAlarmOK() {
 
         try {
-            hora = Integer.parseInt(jTextFieldHour.getText());
-            minuto = Integer.parseInt(jTextFieldMinutes.getText());
-            jLabelAlarm.setText("Alarm: " + hora + ":" + minuto);
+            alarmHour = Integer.parseInt(jTextFieldHour.getText());
+            alarmMinutes = Integer.parseInt(jTextFieldMinutes.getText());
+            jLabelAlarmSetTo.setText("set to: " + alarmHour + ":" + alarmMinutes);
             jLabelSetStatus.setForeground(Color.GREEN);
             textAlarmStatus = "Alarm: { ON } ";
             jLabelSetStatus.setText(textAlarmStatus);
             alarmStatus = true;
-        } catch (Exception error) {
-            JOptionPane.showMessageDialog(null, "Horario incompativel.");
+            limpaCampos();
+
+        } catch (Exception setAlarmOKError) {
+            JOptionPane.showMessageDialog(null, "setAlarmOK(){} error.");
         }
     }
 
     // METODO QUE DESATIVA O ALARME:
     public void setAlarmOFF() {
 
-        jLabelSetStatus.setForeground(Color.RED);
-        textAlarmStatus = "Alarm: { OFF } ";
-        jLabelSetStatus.setText(textAlarmStatus);
         String textEmpityAlarmStatus = "{ . . . }";
-        jLabelAlarm.setText(textEmpityAlarmStatus);
-        alarmStatus = false;
+
+        try {
+            jLabelSetStatus.setForeground(Color.RED);
+            textAlarmStatus = "Alarm: { OFF } ";
+            jLabelSetStatus.setText(textAlarmStatus);
+            jLabelAlarmSetTo.setText(textEmpityAlarmStatus);
+            alarmStatus = false;
+
+        } catch (Exception setAlarmOFFError) {
+            JOptionPane.showMessageDialog(null, "setAlarmOFF(){} error.");
+        }
     }
 
-    // ALGUMAS VARIAVEIS DE HORA:
-    private int hour, minutes, seconds;
-    private String timestr;
+    //          :::::::::: RELOGIO ::::::::::
+    //
+    // ALGUMAS VARIAVEIS DE RELOGIO:
+    int clockHour, clockMinutes, clockSeconds;
+    String timestr;
 
     // RUN:
     @Override
     public void run() {
-
         while (true) {
             try {
-                // SETANDO A HORA:
+                // SETANDO A HORA ATUAL:
                 Calendar calendar = Calendar.getInstance();
-                hour = calendar.get(Calendar.HOUR_OF_DAY);
-                minutes = calendar.get(Calendar.MINUTE);
-                seconds = calendar.get(Calendar.SECOND);
+                int currentHour = calendar.get(Calendar.HOUR_OF_DAY);
+                int currentMinutes = calendar.get(Calendar.MINUTE);
+                int currentSeconds = calendar.get(Calendar.SECOND);
 
-                SimpleDateFormat sdfCurrentTime = new SimpleDateFormat("hh:mm:ss");
+                // SETANDO A HORA DO RELOGIO:
+                clockHour = currentHour;
+                clockMinutes = currentMinutes;
+                clockSeconds = currentSeconds;
+
+                SimpleDateFormat sdfCurrentTime = new SimpleDateFormat("HH:mm:ss");
 
                 Date date = calendar.getTime();
                 timestr = sdfCurrentTime.format(date);
                 jLabelSetTime.setText(timestr);
 
-            } catch (Exception error) {
-                JOptionPane.showMessageDialog(null, "Run: " + error);
+                // FAZENDO O ALARME TOCAR:
+                if (alarmStatus) {
+                    try {
+
+                        if (alarmHour == currentHour && alarmMinutes == currentMinutes) {
+                            JOptionPane.showMessageDialog(null, "Acorda Bylinha!!!");
+                            setAlarmOFF();
+                        }
+
+                    } catch (Exception alarmTriggerError) {
+                        JOptionPane.showMessageDialog(null, "alarmTrigger error.");
+                    }
+                }
+
+            } catch (Exception runError) {
+                JOptionPane.showMessageDialog(null, "run(){} error: " + runError);
             }
         }
     }
@@ -73,7 +110,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
 
         initComponents();
 
-        // DATA:
+        // SETANDO A DATA:
         SimpleDateFormat sdfCurrentDate = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date(System.currentTimeMillis());
         jLabelSetDate.setText(sdfCurrentDate.format(date));
@@ -81,10 +118,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         Thread thread = new Thread(this);
         thread.start();
 
-        // ALARME:
-        alarmStatus = false;
-        textAlarmStatus = "Alarm: { OFF } ";
-        jLabelSetStatus.setText(textAlarmStatus);
+        setAlarmOFF();
     }
 
     @SuppressWarnings("unchecked")
@@ -103,12 +137,11 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         jTextFieldHour = new javax.swing.JTextField();
         jTextFieldMinutes = new javax.swing.JTextField();
         jLabelHorasDoubleDote1 = new javax.swing.JLabel();
-        jLabelHorasDoubleDote2 = new javax.swing.JLabel();
         jButtonCancelSet = new javax.swing.JButton();
         jLabelAlarmStatus = new javax.swing.JLabel();
         jButtonSetAlarm = new javax.swing.JButton();
         jLabelSetStatus = new javax.swing.JLabel();
-        jLabelAlarm = new javax.swing.JLabel();
+        jLabelAlarmSetTo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Byrinha's clock (^~^)");
@@ -178,7 +211,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabelByrinhasClock)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelHoras)
                     .addComponent(jLabelData)
@@ -221,11 +254,6 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         jLabelHorasDoubleDote1.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabelHorasDoubleDote1.setForeground(java.awt.Color.darkGray);
         jLabelHorasDoubleDote1.setText("::");
-
-        jLabelHorasDoubleDote2.setBackground(java.awt.Color.darkGray);
-        jLabelHorasDoubleDote2.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
-        jLabelHorasDoubleDote2.setForeground(java.awt.Color.darkGray);
-        jLabelHorasDoubleDote2.setText("::");
 
         jButtonCancelSet.setBackground(java.awt.Color.darkGray);
         jButtonCancelSet.setFont(new java.awt.Font("Serif", 1, 12)); // NOI18N
@@ -276,16 +304,16 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             }
         });
 
-        jLabelAlarm.setBackground(java.awt.Color.green);
-        jLabelAlarm.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
-        jLabelAlarm.setForeground(java.awt.Color.blue);
-        jLabelAlarm.setText("{ . . . }");
-        jLabelAlarm.setMaximumSize(new java.awt.Dimension(126, 16));
-        jLabelAlarm.setMinimumSize(new java.awt.Dimension(35, 16));
-        jLabelAlarm.setPreferredSize(new java.awt.Dimension(126, 16));
-        jLabelAlarm.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabelAlarmSetTo.setBackground(java.awt.Color.green);
+        jLabelAlarmSetTo.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
+        jLabelAlarmSetTo.setForeground(java.awt.Color.blue);
+        jLabelAlarmSetTo.setText("{ . . . }");
+        jLabelAlarmSetTo.setMaximumSize(new java.awt.Dimension(126, 16));
+        jLabelAlarmSetTo.setMinimumSize(new java.awt.Dimension(35, 16));
+        jLabelAlarmSetTo.setPreferredSize(new java.awt.Dimension(126, 16));
+        jLabelAlarmSetTo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelAlarmMouseClicked(evt);
+                jLabelAlarmSetToMouseClicked(evt);
             }
         });
 
@@ -305,48 +333,43 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelByrinhasAlarm))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(96, 96, 96)
-                        .addComponent(jLabelAlarm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelHorasDoubleDote2)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(96, 96, 96)
+                                .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelAlarmStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelSetStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonCancelSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabelAlarmStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelSetStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButtonCancelSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelByrinhasAlarm)
-                            .addComponent(jLabelAlarmStatus)
-                            .addComponent(jLabelSetStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelAlarm, javax.swing.GroupLayout.DEFAULT_SIZE, 17, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelSetAlarm)
-                            .addComponent(jTextFieldHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelHorasDoubleDote1)
-                            .addComponent(jLabelHorasDoubleDote2))))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelByrinhasAlarm)
+                    .addComponent(jLabelAlarmStatus)
+                    .addComponent(jLabelSetStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSetAlarm)
+                    .addComponent(jTextFieldHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelHorasDoubleDote1)
+                    .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancelSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8))
         );
 
@@ -365,9 +388,9 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(6, 6, 6)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
                 .addGap(28, 28, 28)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -402,9 +425,9 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonSetAlarmMouseClicked
 
-    private void jLabelAlarmMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlarmMouseClicked
+    private void jLabelAlarmSetToMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelAlarmSetToMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabelAlarmMouseClicked
+    }//GEN-LAST:event_jLabelAlarmSetToMouseClicked
 
     public static void main(String args[]) {
 
@@ -418,14 +441,13 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelSet;
     private javax.swing.JButton jButtonSetAlarm;
-    private javax.swing.JLabel jLabelAlarm;
+    private javax.swing.JLabel jLabelAlarmSetTo;
     private javax.swing.JLabel jLabelAlarmStatus;
     private javax.swing.JLabel jLabelByrinhasAlarm;
     private javax.swing.JLabel jLabelByrinhasClock;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JLabel jLabelHoras;
     private javax.swing.JLabel jLabelHorasDoubleDote1;
-    private javax.swing.JLabel jLabelHorasDoubleDote2;
     private javax.swing.JLabel jLabelSetAlarm;
     private javax.swing.JLabel jLabelSetDate;
     private javax.swing.JLabel jLabelSetStatus;

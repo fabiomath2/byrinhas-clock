@@ -48,9 +48,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-              <Component id="jPanel1" pref="100" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="96" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Component id="jPanel2" pref="109" max="32767" attributes="0"/>
+              <Component id="jPanel2" pref="113" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -96,7 +96,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabelByrinhasClock" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="41" max="32767" attributes="0"/>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelHoras" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelData" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -226,28 +226,27 @@
                       </Group>
                       <Component id="jLabelByrinhasAlarm" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
-                          <Component id="jLabelAlarm" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelHorasDoubleDote2" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
+                                  <Component id="jLabelAlarmSetTo" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="16" pref="16" max="-2" attributes="0"/>
-                                  <Component id="jButtonSetAlarm" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabelAlarmStatus" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jLabelSetStatus" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="jButtonSetAlarm" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButtonCancelSet" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabelAlarmStatus" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabelSetStatus" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -258,28 +257,21 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButtonSetAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButtonCancelSet" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelByrinhasAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelAlarmStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelSetStatus" alignment="3" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabelAlarm" pref="17" max="32767" attributes="0"/>
-                          <EmptySpace pref="25" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelSetAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldMinutes" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelHorasDoubleDote1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabelHorasDoubleDote2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelByrinhasAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelAlarmStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelSetStatus" alignment="3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabelAlarmSetTo" pref="28" max="32767" attributes="0"/>
+                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabelSetAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldHour" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldMinutes" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabelHorasDoubleDote1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonSetAlarm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButtonCancelSet" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               </Group>
@@ -358,20 +350,6 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelHorasDoubleDote1">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Serif" size="16" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="::"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabelHorasDoubleDote2">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="40" green="40" id="darkGray" palette="1" red="40" type="palette"/>
-            </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Serif" size="16" style="1"/>
             </Property>
@@ -474,7 +452,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelSetStatusMouseClicked"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabelAlarm">
+        <Component class="javax.swing.JLabel" name="jLabelAlarmSetTo">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
@@ -497,7 +475,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelAlarmMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabelAlarmSetToMouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

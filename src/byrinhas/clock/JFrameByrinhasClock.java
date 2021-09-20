@@ -27,8 +27,8 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         try {
             alarmHour = Integer.parseInt(jSpinnerAlarmHour.getValue().toString());
             alarmMinutes = Integer.parseInt(jSpinnerAlarmMinutes.getValue().toString());
-            jLabelAlarmSetTo.setForeground(Color.GREEN);
-            jLabelAlarmSetTo.setText("set to: " + alarmHour + ":" + alarmMinutes);
+            jLabelAlarmSetTo.setForeground(Color.BLUE);
+            jLabelAlarmSetTo.setText("Alarm set to: " + alarmHour + ":" + alarmMinutes);
             alarmStatus = true;
             limpaCampos();
 
@@ -44,7 +44,6 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
 
         try {
             jLabelAlarmSetTo.setForeground(Color.RED);
-            jLabelAlarmSetTo.setText(alarmOFF);
             jLabelAlarmSetTo.setText(alarmOFF);
             alarmStatus = false;
             limpaCampos();
@@ -139,7 +138,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Byrinha's clock (^~^)");
-        setBackground(java.awt.Color.darkGray);
+        setBackground(java.awt.Color.white);
         setMaximumSize(new java.awt.Dimension(1280, 720));
         setResizable(false);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -148,8 +147,8 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             }
         });
 
-        jPanel2.setBackground(java.awt.Color.gray);
-        jPanel2.setForeground(java.awt.Color.gray);
+        jPanel2.setBackground(java.awt.Color.lightGray);
+        jPanel2.setForeground(java.awt.Color.lightGray);
         jPanel2.setPreferredSize(new java.awt.Dimension(380, 80));
 
         jLabelByrinhasAlarm.setBackground(java.awt.Color.darkGray);
@@ -168,7 +167,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
 
         jButtonCancelSet.setBackground(java.awt.Color.darkGray);
         jButtonCancelSet.setFont(new java.awt.Font("Serif", 1, 10)); // NOI18N
-        jButtonCancelSet.setForeground(java.awt.Color.yellow);
+        jButtonCancelSet.setForeground(java.awt.Color.lightGray);
         jButtonCancelSet.setText("Cancel");
         jButtonCancelSet.setMaximumSize(new java.awt.Dimension(90, 18));
         jButtonCancelSet.setMinimumSize(new java.awt.Dimension(90, 18));
@@ -186,7 +185,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
 
         jButtonSetAlarm.setBackground(java.awt.Color.darkGray);
         jButtonSetAlarm.setFont(new java.awt.Font("Serif", 1, 10)); // NOI18N
-        jButtonSetAlarm.setForeground(java.awt.Color.cyan);
+        jButtonSetAlarm.setForeground(java.awt.Color.lightGray);
         jButtonSetAlarm.setText("OK");
         jButtonSetAlarm.setMaximumSize(new java.awt.Dimension(60, 18));
         jButtonSetAlarm.setMinimumSize(new java.awt.Dimension(60, 18));
@@ -202,8 +201,8 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             }
         });
 
-        jLabelAlarmSetTo.setBackground(java.awt.Color.green);
-        jLabelAlarmSetTo.setFont(new java.awt.Font("Serif", 1, 10)); // NOI18N
+        jLabelAlarmSetTo.setBackground(java.awt.Color.red);
+        jLabelAlarmSetTo.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
         jLabelAlarmSetTo.setForeground(java.awt.Color.red);
         jLabelAlarmSetTo.setText("{ . . . }");
         jLabelAlarmSetTo.setMaximumSize(new java.awt.Dimension(126, 16));
@@ -238,16 +237,16 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         jLabelByrinhasClock.setBackground(java.awt.Color.darkGray);
         jLabelByrinhasClock.setFont(new java.awt.Font("Serif", 1, 16)); // NOI18N
         jLabelByrinhasClock.setForeground(java.awt.Color.darkGray);
-        jLabelByrinhasClock.setText("Byrinha's clock");
+        jLabelByrinhasClock.setText("Byrinha's clock (^~^)");
 
         jLabelHoras.setBackground(java.awt.Color.darkGray);
         jLabelHoras.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
         jLabelHoras.setForeground(java.awt.Color.darkGray);
         jLabelHoras.setText("Hora:");
 
-        jLabelSetTime.setBackground(java.awt.Color.cyan);
+        jLabelSetTime.setBackground(java.awt.Color.blue);
         jLabelSetTime.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
-        jLabelSetTime.setForeground(java.awt.Color.cyan);
+        jLabelSetTime.setForeground(java.awt.Color.blue);
         jLabelSetTime.setText("Horas");
         jLabelSetTime.setMaximumSize(new java.awt.Dimension(100, 22));
         jLabelSetTime.setMinimumSize(new java.awt.Dimension(33, 22));
@@ -258,9 +257,9 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         jLabelData.setForeground(java.awt.Color.darkGray);
         jLabelData.setText("Data:");
 
-        jLabelSetDate.setBackground(java.awt.Color.cyan);
+        jLabelSetDate.setBackground(java.awt.Color.blue);
         jLabelSetDate.setFont(new java.awt.Font("Serif", 1, 13)); // NOI18N
-        jLabelSetDate.setForeground(java.awt.Color.cyan);
+        jLabelSetDate.setForeground(java.awt.Color.blue);
         jLabelSetDate.setText("Data");
         jLabelSetDate.setMaximumSize(new java.awt.Dimension(100, 22));
         jLabelSetDate.setPreferredSize(new java.awt.Dimension(75, 22));
@@ -270,47 +269,41 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelSetAlarm)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinnerAlarmHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelHorasDoubleDote1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSpinnerAlarmMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonCancelSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabelByrinhasAlarm)
-                                        .addGap(53, 53, 53))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabelByrinhasClock)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
-                                        .addComponent(jLabelHoras)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jLabelSetTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabelByrinhasClock)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelHoras))
+                            .addComponent(jLabelByrinhasAlarm))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jLabelSetAlarm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinnerAlarmHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelHorasDoubleDote1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSpinnerAlarmMinutes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonSetAlarm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonCancelSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
+                                .addComponent(jLabelSetTime, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabelData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelSetDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addComponent(jLabelAlarmStatus)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                                .addComponent(jLabelSetDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelAlarmStatus)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 38, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -326,7 +319,7 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelByrinhasAlarm)
                     .addComponent(jLabelAlarmStatus)
-                    .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelAlarmSetTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelSetAlarm)
@@ -344,15 +337,15 @@ public class JFrameByrinhasClock extends javax.swing.JFrame implements Runnable 
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

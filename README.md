@@ -1,5 +1,3 @@
-# byrinhas-clock
+{ # byrinhas-clock }
 
-Relógio com alarme feito em java e componentes swing. :smile:
-
-#Java, #Swing.
+{ Relógio com alarme feito em java e componentes swing }
